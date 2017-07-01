@@ -1,3 +1,6 @@
-/**
- * Created by Alex_Lazareva on 01.07.2017.
- */
+import React from 'react';
+import { render } from 'react-dom';
+import Datetime from './datetime';
+
+render (<Datetime />, document.querySelector('#app') );
+
