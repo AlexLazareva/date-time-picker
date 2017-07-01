@@ -8,11 +8,12 @@ export default class DateTime extends React.Component {
     constructor(props) {
         super(props);
 
-        bindAll(this, ['handleFocus', 'handleSave']);
+        bindAll(this, ['handleFocus', 'handleSave', 'handleChange']);
 
         this.state = {
             isOpen: false,
-            tab: 0
+            tab: 0,
+            m: this.props.value
         }
     }
 
@@ -21,7 +22,7 @@ export default class DateTime extends React.Component {
     }
 
     handleFocus() {
-        if(this.state.isOpen) this.toggle();
+        if(!this.state.isOpen) this.toggle();
     }
 
     toggle() {
@@ -31,6 +32,10 @@ export default class DateTime extends React.Component {
 
     handleTabClick(tab) {
         this.setState({ tab });
+    }
+
+    handleChange(m) {
+        this.setState({ m });
     }
 
     render() {
@@ -53,7 +58,14 @@ export default class DateTime extends React.Component {
                         <button className={ btnTime } onClick={ this.handleTabClick.bind(this, 1) }>Время</button>
                     </div>
                     <div className='tabs'>
-
+                        <Calendar
+                            className = { calendarClasses }
+                            onChange = { this.handleChange }
+                        />
+                        <Time
+                            className = { timeClasses }
+                            onChange = { this.handleChange }
+                        />
                     </div>
                     <button className='dt-btn-save' onClick={ this.handleSave }>Сохранить</button>
                 </div>
