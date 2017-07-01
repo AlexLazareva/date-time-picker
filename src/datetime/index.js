@@ -16,6 +16,23 @@ export default class DateTime extends React.Component {
         }
     }
 
+    handleSave() {
+        this.setState({ isOpen : false });
+    }
+
+    handleFocus() {
+        if(this.state.isOpen) this.toggle();
+    }
+
+    toggle() {
+        const isOpen = !this.state.isOpen;
+        this.setState({ isOpen });
+    }
+
+    handleTabClick(tab) {
+        this.setState({ tab });
+    }
+
     render() {
         const { tab, isOpen } = this.state;
 
@@ -30,14 +47,16 @@ export default class DateTime extends React.Component {
                 <div className='dt-input'>
                     <input type='text' onFocus={ this.handleFocus }/>
                 </div>
-                <div className='options'>
-                    <button className={ btnDate } onClick={ this.handleTabClick.bind(this, 0) }>Дата</button>
-                    <button className={ btnTime } onClick={ this.handleTabClick.bind(this, 1) }>Время</button>
-                </div>
-                <div className='tabs'>
+                <div className={ wrapperClasses }>
+                    <div className='options'>
+                        <button className={ btnDate } onClick={ this.handleTabClick.bind(this, 0) }>Дата</button>
+                        <button className={ btnTime } onClick={ this.handleTabClick.bind(this, 1) }>Время</button>
+                    </div>
+                    <div className='tabs'>
 
+                    </div>
+                    <button className='dt-btn-save' onClick={ this.handleSave }>Сохранить</button>
                 </div>
-                <button className='dt-btn-save' onClick={ this.handleSave }>Сохранить</button>
             </div>
         );
     }
