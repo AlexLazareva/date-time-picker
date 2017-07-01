@@ -9,14 +9,21 @@ export default class DateTime extends React.Component {
         super(props);
 
         bindAll(this, ['handleFocus', 'handleSave']);
+
+        this.state = {
+            isOpen: false,
+            tab: 0
+        }
     }
 
     render() {
+        const { tab, isOpen } = this.state;
 
         const btnDate = classnames('dt-btn', {'is-active' : tab === 0});
         const btnTime = classnames('dt-btn', {'is-active' : tab === 1});
         const calendarClasses = classnames('tab', {'is-active' : tab === 0});
         const timeClasses = classnames('tab', {'is-active' : tab === 1});
+        const wrapperClasses = classnames('dt-popup', {'is-open' : isOpen});
 
         return (
             <div className='b-datetime'>
