@@ -24,7 +24,8 @@ export default class DateTime extends React.Component {
                     <input type='text' onFocus={ this.handleFocus }/>
                 </div>
                 <div className='options'>
-
+                    <button className={ btnDate } onClick={ this.handleTabClick.bind(this, 0) }>Дата</button>
+                    <button className={ btnTime } onClick={ this.handleTabClick.bind(this, 1) }>Время</button>
                 </div>
                 <div className='tabs'>
 
