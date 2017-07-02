@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { bindAll } from 'lodash';
 import classnames from 'classnames';
+import moment from 'moment';
 import './styles.less';
 
 export default class DateTime extends React.Component {
+
+    static propTypes = {
+        onSave: PropTypes.func.isRequired,
+        value: PropTypes.object,
+        format: PropTypes.string
+    };
+
+    static defaultProps = {
+        value: moment
+    };
 
     constructor(props) {
         super(props);
