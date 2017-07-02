@@ -8,12 +8,13 @@ export default class DateTime extends React.Component {
 
     static propTypes = {
         onSave: PropTypes.func.isRequired,
-        value: PropTypes.object,
+        value: PropTypes.any,
         format: PropTypes.string
     };
 
     static defaultProps = {
-        value: moment
+        value: moment(),
+        format: 'DD.MM.YYYY HH:mm'
     };
 
     constructor(props) {
@@ -29,6 +30,7 @@ export default class DateTime extends React.Component {
     }
 
     handleSave() {
+        this.props.onSave(this.props.m.format(this.props.format));
         this.setState({ isOpen : false });
     }
 
@@ -50,7 +52,7 @@ export default class DateTime extends React.Component {
     }
 
     render() {
-        const { tab, isOpen } = this.state;
+        const { tab, m, isOpen } = this.state;
 
         const btnDate = classnames('dt-btn', {'is-active' : tab === 0});
         const btnTime = classnames('dt-btn', {'is-active' : tab === 1});
@@ -61,7 +63,7 @@ export default class DateTime extends React.Component {
         return (
             <div className='b-datetime'>
                 <div className='dt-input'>
-                    <input type='text' onFocus={ this.handleFocus }/>
+                    <input type='text' value={ m.format(this.props.format) } onFocus={ this.handleFocus }/>
                 </div>
                 <div className={ wrapperClasses }>
                     <div className='options'>
