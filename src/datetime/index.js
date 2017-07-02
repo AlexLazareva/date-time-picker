@@ -74,10 +74,12 @@ export default class DateTime extends React.Component {
                         <Calendar
                             className = { calendarClasses }
                             onChange = { this.handleChange }
+                            moment = { m }
                         />
                         <Time
                             className = { timeClasses }
                             onChange = { this.handleChange }
+                            moment = { m }
                         />
                     </div>
                     <button className='dt-btn-save' onClick={ this.handleSave }>Сохранить</button>
