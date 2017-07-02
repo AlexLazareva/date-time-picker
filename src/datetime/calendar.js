@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import { bindAll } from 'lodash';
+import { bindAll, range, chunk } from 'lodash';
 import classnames from 'classnames';
 
 export default class Calendar extends React.Component {
@@ -28,8 +28,35 @@ export default class Calendar extends React.Component {
 
     }
 
-    renderCells() {
+    renderCells(m) {
+        const d = m.date;
+        const d1 = m.clone().subtract(1, 'moth').endOf('month').date();
+        const d2 = m.clone().date(1).day();
+        const d3 = m.clone().endOf('month').date();
 
+        const days = [].concat(
+            range(d1 - d2 + 1, d1 + 1),
+            range(1, d3 + 1),
+            range(1, 42 - d3 - d2 + 1)
+        );
+
+        return chunk(days, 7).map((row, w) => {
+            return (
+                <tr key={ w }>
+                    { row.map((i) => {
+                        return (
+                            <Day
+                                key={ i }
+                                i={ i }
+                                d={ d }
+                                w={ w }
+                                onClick={ this.selectDate.bind(this, i, w) }
+                            />
+                        );
+                    }) }
+                </tr>
+            );
+        });
     }
 
     render() {
@@ -51,7 +78,7 @@ export default class Calendar extends React.Component {
                         </tr>
                     </thead>
                     <tbody>
-                        { this.renderCells }
+                        { this.renderCells(m) }
                     </tbody>
                 </table>
             </div>
