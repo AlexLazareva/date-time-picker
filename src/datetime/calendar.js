@@ -20,12 +20,20 @@ export default class Calendar extends React.Component {
         }
     }
 
-    previosMonth() {
-
+    previosMonth(event) {
+        event.preventDefault();
+        const { m } = this.state;
+        m.subtract(1, 'month');
+        this.setState( {m});
+        this.props.onChange(m);
     }
 
-    nextMonth() {
-
+    nextMonth(event) {
+        event.preventDefault();
+        const { m } = this.state;
+        m.add(1, 'month');
+        this.setState( {m});
+        this.props.onChange(m);
     }
 
     renderCells(m) {
