@@ -6,6 +6,8 @@ import moment from 'moment';
 import Calendar from './calendar';
 import './styles.less';
 
+moment.locale('ru');
+
 export default class DateTime extends React.Component {
 
     static propTypes = {
