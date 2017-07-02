@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react';
 import { bindAll, range, chunk } from 'lodash';
 import classnames from 'classnames';
+import Day from './day';
 
 export default class Calendar extends React.Component {
 
