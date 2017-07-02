@@ -26,9 +26,9 @@ export default class Day extends React.Component {
         });
 
         return (
-            <div>
-
-            </div>
+            <td className={ wrapperClasses } {...this.props}>
+                { i }
+            </td>
         );
     }
 }
