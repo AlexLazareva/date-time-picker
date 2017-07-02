@@ -59,6 +59,22 @@ export default class Calendar extends React.Component {
         });
     }
 
+    selectDate(i, w) {
+        const prevMonth = (w === 0 && i > 7);
+        const nextMonth = (w === 1 && i > 14);
+
+        const { m } = this.state;
+
+        m.date();
+
+        this.setState({ m });
+
+        if (prevMonth) m.subtruct(1, 'month');
+        if (nextMonth) m.add(1, 'month');
+
+        this.props.onChange(m);
+    }
+
     render() {
         const { m } = this.state;
         const wrapperClasses = classnames(this.props.className, 'tab-calendar');
