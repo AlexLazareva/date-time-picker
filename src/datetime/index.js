@@ -2,6 +2,8 @@ import React, { PropTypes } from 'react';
 import { bindAll } from 'lodash';
 import classnames from 'classnames';
 import moment from 'moment';
+
+import Calendar from './calendar';
 import './styles.less';
 
 export default class DateTime extends React.Component {
