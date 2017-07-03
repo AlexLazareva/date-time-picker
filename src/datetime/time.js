@@ -18,11 +18,14 @@ export default class Time extends React.Component {
         }
     }
 
-    changeHours() {
-
+    changeHours(pos) {
+        const m = this.props.moment;
+        m.hour( parseInt(pos, x) );
+        this.setState({ m });
+        this.props.onChange(m);
     }
 
-    changeMinutes() {
+    changeMinutes(pos) {
 
     }
 
