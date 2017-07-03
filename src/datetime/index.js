@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import moment from 'moment';
 
 import Calendar from './calendar';
+import Time from './time';
 import './styles.less';
 
 moment.locale('ru');
