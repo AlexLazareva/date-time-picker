@@ -20,14 +20,14 @@ export default class Time extends React.Component {
 
     changeHours(pos) {
         const m = this.props.moment;
-        m.hour( parseInt(pos, x) );
+        m.hour( parseInt(pos.x) );
         this.setState({ m });
         this.props.onChange(m);
     }
 
     changeMinutes(pos) {
         const m = this.props.moment;
-        m.minutes( parseInt(pos, x) );
+        m.minutes( parseInt(pos.x) );
         this.setState({ m });
         this.props.onChange(m);
     }
@@ -55,7 +55,7 @@ export default class Time extends React.Component {
                     <InputSlider className='u-slider-time'
                         xmin={0}
                         xmax={59}
-                        x={ m.minute() }
+                        x={ m.minutes() }
                         onChange={ this.changeMinutes.bind(this) }
                     />
                 </div>
