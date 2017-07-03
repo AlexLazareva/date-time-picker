@@ -26,7 +26,10 @@ export default class Time extends React.Component {
     }
 
     changeMinutes(pos) {
-
+        const m = this.props.moment;
+        m.minutes( parseInt(pos, x) );
+        this.setState({ m });
+        this.props.onChange(m);
     }
 
     render() {
