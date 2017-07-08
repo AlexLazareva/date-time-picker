@@ -5,8 +5,8 @@ export default class Day extends React.Component {
 
     static propTypes = {
         i: PropTypes.number.isRequired,
-        d: PropTypes.number.isRequired,
-        w: PropTypes.number.isRequired
+        w: PropTypes.number.isRequired,
+        d: PropTypes.number.isRequired
     };
 
     constructor(props) {

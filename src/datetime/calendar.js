@@ -14,14 +14,14 @@ export default class Calendar extends React.Component {
     constructor(props) {
         super(props);
 
-        bindAll(this, ['previosMonth', 'nextMonth', 'renderCells']);
+        bindAll(this, ['prevMonth', 'nextMonth', 'renderCells']);
 
         this.state = {
             m: this.props.moment
         }
     }
 
-    previosMonth(event) {
+    prevMonth(event) {
         event.preventDefault();
         const { m } = this.state;
         m.subtract(1, 'month');
@@ -70,7 +70,7 @@ export default class Calendar extends React.Component {
 
     selectDate(i, w) {
         const prevMonth = (w === 0 && i > 7);
-        const nextMonth = (w === 1 && i > 14);
+        const nextMonth = (w >= 4 && i > 14);
 
         const { m } = this.state;
 
@@ -92,7 +92,7 @@ export default class Calendar extends React.Component {
         return (
             <div className={ wrapperClasses }>
                 <div className='toolbar'>
-                    <button className='prev-month' onClick={ this.previosMonth }> - </button>
+                    <button className='prev-month' onClick={ this.prevMonth }> - </button>
                     <span className='current-date'>{ m.format('MMM YYYY')}</span>
                     <button className='next-month' onClick={ this.nextMonth }> - </button>
                 </div>
